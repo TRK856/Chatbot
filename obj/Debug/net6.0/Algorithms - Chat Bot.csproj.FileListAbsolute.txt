@@ -1,0 +1,15 @@
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Algorithms - Chat Bot
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Algorithms - Chat Bot.deps.json
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Algorithms - Chat Bot.runtimeconfig.json
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Algorithms - Chat Bot.dll
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Algorithms - Chat Bot.pdb
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Algorithms - Chat Bot.csproj.AssemblyReference.cache
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Algorithms - Chat Bot.GeneratedMSBuildEditorConfig.editorconfig
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Algorithms - Chat Bot.AssemblyInfoInputs.cache
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Algorithms - Chat Bot.AssemblyInfo.cs
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Algorithms - Chat Bot.csproj.CoreCompileInputs.cache
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Algorithms - Chat Bot.dll
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/refint/Algorithms - Chat Bot.dll
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Algorithms - Chat Bot.pdb
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Algorithms - Chat Bot.genruntimeconfig.cache
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/ref/Algorithms - Chat Bot.dll
