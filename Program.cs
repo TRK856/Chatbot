@@ -1,18 +1,38 @@
 ﻿#nullable disable
 using System;
 using System.Text.Json;
-using Algorithm;
+using ConsoleApp;
 List<Chatbot> ChatbotData = new List<Chatbot>();
 
+// JSON
+string jsonCurrentPath = @$"{Directory.GetCurrentDirectory()}/data.json";
+
+if (File.Exists(jsonCurrentPath))
+{
+    string jsonStringFromFile = File.ReadAllText(jsonCurrentPath);
+    ChatbotData = JsonSerializer.Deserialize<List<Chatbot>>(jsonStringFromFile);
+}
+else
+{
+    Console.WriteLine("No JSON File Found, are you sure you want to Countiue?");
+}
+
+
+// UI
 while (true)
 {
     // Main Menu
     Console.Clear();
-    Console.WriteLine("Welcome to the Main Menu for the chat bot. You can play test the bot or train the bot to your liking...Enjoy!\n      1. Talk to the Bot\n      2. Edit Database\n      3. Request Version\n      4. Exit Main Menu");
-    Console.Write("-> "); int MainMenuChoice = Convert.ToInt32(Console.ReadLine());
-    Utility.load("Loading Data", 1, 900);
+    Console.WriteLine("");
+    string[] MainMenuOptions = { "Talk to the Bot", "Edit Database", "Request Version", "Exit Main Menu" };
+    Utility.CreateMenu(
+        "Welcome to the Main Menu for the chat bot. You can play test the bot or train the bot to your liking...Enjoy!",
+        MainMenuOptions
+        );
+    int MainMenuChoice = Convert.ToInt32(Console.ReadLine());
+    Utility.Load("Loading Data", 1, 900);
     Console.Clear();
-    Utility.load("Opening", 1, 300);
+    Utility.Load("Opening", 1, 300);
     Console.Clear();
 
     // Does Action according to choice
@@ -39,23 +59,31 @@ while (true)
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("*THERE IS NO DATABASE RIGHT NOW, EVERYHTING WILL ONLY BE SAVED WHILE THE BOT IS IN USE*");
-            Console.WriteLine("Welcome to the Database Menu!\n      1. Print All Database\n      2. Manipulate Database\n      3. Erase DataBase\n      4. Return to Main Menu");
-            Console.Write("-> ");
+            Console.WriteLine("*NO CHANGES ARE PERMENENT UNLESS SAVED*");
+            string[] DataOptions = { "Print All Database", "Manipulate Database", "Reset Database (fetch from local file)", "Save Changes (save to local file)", "Return to Main Menu" };
+            Utility.CreateMenu(
+                "Welcome to the Database Menu!",
+                DataOptions
+                );
             int DatabaseChoice = Convert.ToInt32(Console.ReadLine());
             Console.Clear();
             if (DatabaseChoice == 1)
             {
                 Console.WriteLine($"\nCurrent Database: ");
-                Utility.writeAll(ChatbotData);
-                Console.WriteLine("\nPRESS ANY KEY TO RETURN BACK TO DATABASE MENU");
+                Utility.WriteAll(ChatbotData);
+                Console.WriteLine("\nPRESS ANY KEY TO RETURN BACK TO MAIN MENU");
                 Console.Write("-> ");
                 Console.ReadLine();
             }
             else if (DatabaseChoice == 2)
             {
-                Console.WriteLine("Manipulate Database.\n      1. Add to Database\n      2. Remove from Database\n      3. Return to Database Menu");
-                Console.Write("-> ");
+
+                Console.WriteLine("Manipulate Database.\n      1. Add to Database\n      2. Remove from Database\n      3. Erase All of DataBase\n      4. Return to Database Menu");
+                string[] DataMOptions = { "Add to Database", "Remove from Database", "Erase All of DataBase", "Return to Database Menu" };
+                Utility.CreateMenu(
+                    "Manipulate Database.",
+                    DataMOptions
+                    );
                 int DatabaseMChoice = Convert.ToInt32(Console.ReadLine());
                 if (DatabaseMChoice == 1)
                 {
@@ -67,25 +95,26 @@ while (true)
                         Console.Write("User Input: "); string user = Console.ReadLine();
                         Console.Write("Bot Response: "); string bot = Console.ReadLine();
                         ChatbotData.Add(new Chatbot(user, bot));
-                        Console.WriteLine("\nAdd More? Y -or- N");
+                        Console.WriteLine("\nReturn to Database Menu? Y -or- N");
                         Console.Write("-> ");
-                        if (Console.ReadLine().ToLower() != "y")
+                        if (Console.ReadLine().ToLower() == "y")
                         {
                             break;
                         }
                     }
                 }
-                else if (DatabaseMChoice == 3)
-                {
-
-                }
-
             }
             else if (DatabaseChoice == 3)
             {
-                ChatbotData.Clear();
+                string jsonStringFromFile = File.ReadAllText(jsonCurrentPath);
+                ChatbotData = JsonSerializer.Deserialize<List<Chatbot>>(jsonStringFromFile);
             }
             else if (DatabaseChoice == 4)
+            {
+                string jsonString = JsonSerializer.Serialize(ChatbotData);
+                File.WriteAllText(jsonCurrentPath, jsonString);
+            }
+            else if (DatabaseChoice == 5)
             {
                 break;
             }
@@ -106,9 +135,9 @@ while (true)
     else if (MainMenuChoice == 4)
     {
         // this is for testing
-        Console.WriteLine("Thank You: Have a Good Day!");
+        Console.WriteLine("Thank You~ Have a Good Day!");
         break;
     }
 
-    Utility.load("Returning", 1, 900);
+    Utility.Load("Returning", 1, 900);
 }

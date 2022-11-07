@@ -1,4 +1,5 @@
-namespace Algorithm
+// idk what to name this but its useful stuff
+namespace ConsoleApp
 {
     public class Chat
     {
@@ -26,7 +27,7 @@ namespace Algorithm
     // picked the best search idk if i use it tho
     public class Search
     {
-        public static int linear(int[] anArray, int item)
+        public static int Linear(int[] anArray, int item)
         {
             for (int i = 0; i < anArray.Length; i++)
             {
@@ -41,7 +42,7 @@ namespace Algorithm
         }
 
         // string linear search
-        public static int linear(string[] anArray, string item)
+        public static int Linear(string[] anArray, string item)
         {
             for (int i = 0; i < anArray.Length; i++)
             {
@@ -60,7 +61,7 @@ namespace Algorithm
     // picked the best sort idk if i use it tho
     public class Sort
     {
-        static public void insertion(int[] anArray)
+        static public void Insertion(int[] anArray)
         {
             for (int i = 1; i < anArray.Length; i++)
             {
@@ -77,7 +78,7 @@ namespace Algorithm
             }
         }
 
-        static public void insertion(string[] anArray)
+        static public void Insertion(string[] anArray)
         {
             for (int i = 1; i < anArray.Length; i++)
             {
@@ -98,7 +99,7 @@ namespace Algorithm
     // just to help make life a lil easier
     public class Utility
     {
-        static public void writeAll(int[] anArray)
+        static public void WriteAll(int[] anArray)
         {
             Console.Write("[");
             for (int i = 0; i < anArray.Length - 1; i++)
@@ -108,7 +109,7 @@ namespace Algorithm
             Console.WriteLine($"{anArray[anArray.Length - 1]}]");
         }
 
-        static public void writeAll(string[] anArray)
+        static public void WriteAll(string[] anArray)
         {
             Console.Write("[");
             for (int i = 0; i < anArray.Length - 1; i++)
@@ -117,57 +118,57 @@ namespace Algorithm
             }
             Console.WriteLine($"{anArray[anArray.Length - 1]}]");
         }
-        static public void writeAll(List<Chatbot> anArray)
+        static public void WriteAll(List<Chatbot> anArray)
         {
             Console.WriteLine("[");
             for (int i = 0; i < anArray.Count - 1; i++)
             {
-                Utility.tab(1);
+                Utility.Tab(1);
                 Console.WriteLine("{");
-                Utility.tab(2);
+                Utility.Tab(2);
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"UserInput: {anArray[i].userInput},");
-                Utility.tab(2);
+                Utility.Tab(2);
                 Console.WriteLine($"BotResponse: {anArray[i].botResponse}");
                 Console.ForegroundColor = GlobalVar.DefaultColorForeground;
-                Utility.tab(1);
+                Utility.Tab(1);
                 Console.WriteLine("}, ");
             }
-            Utility.tab(1);
+            Utility.Tab(1);
             Console.WriteLine("{");
-            Utility.tab(2);
+            Utility.Tab(2);
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"UserInput: {anArray[anArray.Count - 1].userInput},");
-            Utility.tab(2);
+            Utility.Tab(2);
             Console.WriteLine($"BotResponse: {anArray[anArray.Count - 1].botResponse}");
             Console.ForegroundColor = GlobalVar.DefaultColorForeground;
-            Utility.tab(1);
+            Utility.Tab(1);
             Console.WriteLine("}");
             Console.WriteLine("]");
         }
 
-        static public void swap(int[] anArray, int pos1, int pos2)
+        static public void Swap(int[] anArray, int pos1, int pos2)
         {
             int swap = anArray[pos1];
             anArray[pos1] = anArray[pos2];
             anArray[pos2] = swap;
         }
 
-        static public void swap(string[] anArray, int pos1, int pos2)
+        static public void Swap(string[] anArray, int pos1, int pos2)
         {
             string swap = anArray[pos1];
             anArray[pos1] = anArray[pos2];
             anArray[pos2] = swap;
         }
 
-        static public void tab(int numOfTab)
+        static public void Tab(int numOfTab)
         {
             for (int i = 0; i < numOfTab; i++)
             {
                 Console.Write("      ");
             }
         }
-        static public void load(string message, int animationRepition, int animationLength)
+        static public void Load(string message, int animationRepition, int animationLength)
         {
             for (int i = 0; i < animationRepition; i++)
             {
@@ -181,6 +182,16 @@ namespace Algorithm
                 Console.WriteLine($"{message}...");
                 Thread.Sleep(animationLength);
             }
+        }
+        static public void CreateMenu(string menuIntro, string[] options)
+        {
+            Console.WriteLine($"{menuIntro}");
+            for (int i = 0; i < options.Length; i++)
+            {
+                Utility.Tab(1);
+                Console.WriteLine($"{i + 1}. {options[i]}");
+            }
+            Console.Write("-> ");
         }
     }
 }
