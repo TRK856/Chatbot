@@ -6,15 +6,21 @@ List<Chatbot> ChatbotData = new List<Chatbot>();
 
 // JSON
 string jsonCurrentPath = @$"{Directory.GetCurrentDirectory()}/data.json";
+Utility.Load("Searching for Data File", 1, 700);
 
 if (File.Exists(jsonCurrentPath))
 {
-    string jsonStringFromFile = File.ReadAllText(jsonCurrentPath);
-    ChatbotData = JsonSerializer.Deserialize<List<Chatbot>>(jsonStringFromFile);
+    ChatbotData = JsonSerializer.Deserialize<List<Chatbot>>(File.ReadAllText(jsonCurrentPath));
 }
 else
 {
-    Console.WriteLine("No JSON File Found, are you sure you want to Countiue?");
+    Utility.Load("No Data File Found, Creating File", 2, 500);
+    File.WriteAllText(jsonCurrentPath, JsonSerializer.Serialize(ChatbotData));
+    Console.Clear();
+    Console.WriteLine("By continuing, you understand that the algorithm will not function without Training...Pls go to github and download the pre-rendered data file in order to use the bot immediately");
+    Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+    Console.Write("-> ");
+    Console.ReadLine();
 }
 
 
@@ -23,7 +29,6 @@ while (true)
 {
     // Main Menu
     Console.Clear();
-    Console.WriteLine("");
     string[] MainMenuOptions = { "Talk to the Bot", "Edit Database", "Request Version", "Exit Main Menu" };
     Utility.CreateMenu(
         "Welcome to the Main Menu for the chat bot. You can play test the bot or train the bot to your liking...Enjoy!",
@@ -77,8 +82,6 @@ while (true)
             }
             else if (DatabaseChoice == 2)
             {
-
-                Console.WriteLine("Manipulate Database.\n      1. Add to Database\n      2. Remove from Database\n      3. Erase All of DataBase\n      4. Return to Database Menu");
                 string[] DataMOptions = { "Add to Database", "Remove from Database", "Erase All of DataBase", "Return to Database Menu" };
                 Utility.CreateMenu(
                     "Manipulate Database.",
@@ -106,13 +109,16 @@ while (true)
             }
             else if (DatabaseChoice == 3)
             {
-                string jsonStringFromFile = File.ReadAllText(jsonCurrentPath);
-                ChatbotData = JsonSerializer.Deserialize<List<Chatbot>>(jsonStringFromFile);
+                ChatbotData = JsonSerializer.Deserialize<List<Chatbot>>(File.ReadAllText(jsonCurrentPath));
+                Utility.Load("Fetching", 3, 400);
+                Utility.Load("Success, Returning", 1, 600);
+
             }
             else if (DatabaseChoice == 4)
             {
-                string jsonString = JsonSerializer.Serialize(ChatbotData);
-                File.WriteAllText(jsonCurrentPath, jsonString);
+                File.WriteAllText(jsonCurrentPath, JsonSerializer.Serialize(ChatbotData));
+                Utility.Load("Writing", 3, 400);
+                Utility.Load("Success, Returning", 1, 600);
             }
             else if (DatabaseChoice == 5)
             {
