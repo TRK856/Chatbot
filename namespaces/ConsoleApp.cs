@@ -27,11 +27,11 @@ namespace ConsoleApp
     // picked the best search idk if i use it tho
     public class Search
     {
-        public static int Linear(int[] anArray, int item)
+        public static int LinearCatagory(List<Chatbot> anList, string catagory)
         {
-            for (int i = 0; i < anArray.Length; i++)
+            for (int i = 0; i < anList.Count(); i++)
             {
-                if (anArray[i] == item)
+                if (anList[i].catagory == catagory)
                 {
                     return i;
                 }
@@ -108,7 +108,6 @@ namespace ConsoleApp
             }
             Console.WriteLine($"{anArray[anArray.Length - 1]}]");
         }
-
         static public void WriteAll(string[] anArray)
         {
             Console.Write("[");
@@ -118,49 +117,79 @@ namespace ConsoleApp
             }
             Console.WriteLine($"{anArray[anArray.Length - 1]}]");
         }
-        static public void WriteAll(List<Chatbot> anArray)
+        static public void WriteAll(List<Chatbot> aList)
         {
             Console.WriteLine("[");
-            for (int i = 0; i < anArray.Count - 1; i++)
+            for (int i = 0; i < aList.Count(); i++)
             {
                 Utility.Tab(1);
                 Console.WriteLine("{");
-                Utility.Tab(2);
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine($"UserInput: {anArray[i].userInput},");
                 Utility.Tab(2);
-                Console.WriteLine($"BotResponse: {anArray[i].botResponse}");
+                Console.WriteLine($"'Catagory': '{aList[i].catagory}',");
+                Utility.Tab(2);
+                Console.WriteLine("'UserInputs':");
+                Utility.Tab(3);
+                Console.WriteLine("{");
+                for (int f = 0; f < aList[i].userInputs.Count(); f++)
+                {
+                    Utility.Tab(4);
+                    Console.Write($"'{aList[i].userInputs[f]}'");
+                    if (f != aList[i].userInputs.Count() - 1)
+                    {
+                        Console.WriteLine(",");
+                    }
+                    else
+                    {
+                        Console.WriteLine("");
+                    }
+                }
+                Utility.Tab(3);
+                Console.WriteLine("},");
+                Utility.Tab(2);
+                Console.WriteLine("'BotRespnses':");
+                Utility.Tab(3);
+                Console.WriteLine("{");
+                for (int j = 0; j < aList[i].botResponses.Count(); j++)
+                {
+                    Utility.Tab(4);
+                    Console.Write($"'{aList[i].botResponses[j]}'");
+                    if (j != aList[i].botResponses.Count() - 1)
+                    {
+                        Console.WriteLine(",");
+                    }
+                    else
+                    {
+                        Console.WriteLine("");
+                    }
+                }
+                Utility.Tab(3);
+                Console.WriteLine("}");
                 Console.ForegroundColor = GlobalVar.DefaultColorForeground;
                 Utility.Tab(1);
-                Console.WriteLine("}, ");
+                if (i == aList.Count() - 1)
+                {
+                    Console.WriteLine("}");
+                }
+                else
+                {
+                    Console.WriteLine("},");
+                }
             }
-            Utility.Tab(1);
-            Console.WriteLine("{");
-            Utility.Tab(2);
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine($"UserInput: {anArray[anArray.Count - 1].userInput},");
-            Utility.Tab(2);
-            Console.WriteLine($"BotResponse: {anArray[anArray.Count - 1].botResponse}");
-            Console.ForegroundColor = GlobalVar.DefaultColorForeground;
-            Utility.Tab(1);
-            Console.WriteLine("}");
             Console.WriteLine("]");
         }
-
         static public void Swap(int[] anArray, int pos1, int pos2)
         {
             int swap = anArray[pos1];
             anArray[pos1] = anArray[pos2];
             anArray[pos2] = swap;
         }
-
         static public void Swap(string[] anArray, int pos1, int pos2)
         {
             string swap = anArray[pos1];
             anArray[pos1] = anArray[pos2];
             anArray[pos2] = swap;
         }
-
         static public void Tab(int numOfTab)
         {
             for (int i = 0; i < numOfTab; i++)

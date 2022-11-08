@@ -1,2 +1,3 @@
-namespace Algorithm{
+namespace Algorithm
+{
 }

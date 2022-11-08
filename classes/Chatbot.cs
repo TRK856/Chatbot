@@ -1,10 +1,12 @@
 public class Chatbot
 {
-    public string userInput { get; set; }
-    public string botResponse { get; set; }
-    public Chatbot(string userInput, string botResponse)
+    public string catagory { get; set; }
+    public List<string> userInputs { get; set; }
+    public List<string> botResponses { get; set; }
+    public Chatbot(string catagory, List<string> userInputs, List<string> botResponses)
     {
-        this.userInput = userInput;
-        this.botResponse = botResponse;
+        this.catagory = catagory;
+        this.userInputs = userInputs;
+        this.botResponses = botResponses;
     }
 }

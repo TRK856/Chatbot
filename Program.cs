@@ -2,7 +2,7 @@
 using System;
 using System.Text.Json;
 using ConsoleApp;
-List<Chatbot> ChatbotData = new List<Chatbot>();
+List<Chatbot> Database = new List<Chatbot>();
 
 // JSON
 string jsonCurrentPath = @$"{Directory.GetCurrentDirectory()}/data.json";
@@ -10,12 +10,12 @@ Utility.Load("Searching for Data File", 1, 700);
 
 if (File.Exists(jsonCurrentPath))
 {
-    ChatbotData = JsonSerializer.Deserialize<List<Chatbot>>(File.ReadAllText(jsonCurrentPath));
+    Database = JsonSerializer.Deserialize<List<Chatbot>>(File.ReadAllText(jsonCurrentPath));
 }
 else
 {
     Utility.Load("No Data File Found, Creating File", 2, 500);
-    File.WriteAllText(jsonCurrentPath, JsonSerializer.Serialize(ChatbotData));
+    File.WriteAllText(jsonCurrentPath, JsonSerializer.Serialize(Database));
     Console.Clear();
     Console.WriteLine("By continuing, you understand that the algorithm will not function without Training...Pls go to github and download the pre-rendered data file in order to use the bot immediately");
     Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
@@ -24,7 +24,9 @@ else
 }
 
 
-// UI
+// New UI (rn UI is super messy, so it needs a reset)
+
+// Current UI 
 while (true)
 {
     // Main Menu
@@ -64,8 +66,8 @@ while (true)
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("*NO CHANGES ARE PERMENENT UNLESS SAVED*");
-            string[] DataOptions = { "Print All Database", "Manipulate Database", "Reset Database (fetch from local file)", "Save Changes (save to local file)", "Return to Main Menu" };
+            Console.WriteLine("*NO CHANGES ARE PERMENENT UNLESS SAVED*\n*DATABASE = NON-PERSISTANT STORAGE*\n*LOCAL FILE = PERSISTANT-STORAGE*");
+            string[] DataOptions = { "Print All Database", "Manipulate Database", "Reset Database (fetch from local file)", "Save Changes (save to local file)", "Clear Local File", "Return to Main Menu" };
             Utility.CreateMenu(
                 "Welcome to the Database Menu!",
                 DataOptions
@@ -75,16 +77,16 @@ while (true)
             if (DatabaseChoice == 1)
             {
                 Console.WriteLine($"\nCurrent Database: ");
-                Utility.WriteAll(ChatbotData);
+                Utility.WriteAll(Database);
                 Console.WriteLine("\nPRESS ANY KEY TO RETURN BACK TO MAIN MENU");
                 Console.Write("-> ");
                 Console.ReadLine();
             }
             else if (DatabaseChoice == 2)
             {
-                string[] DataMOptions = { "Add to Database", "Remove from Database", "Erase All of DataBase", "Return to Database Menu" };
+                string[] DataMOptions = { "Add to Database", "Remove from Database", "Edit an Existing Catagory", "Erase All of DataBase", "Return to Database Menu" };
                 Utility.CreateMenu(
-                    "Manipulate Database.",
+                    "Manipulate Database Menu.",
                     DataMOptions
                     );
                 int DatabaseMChoice = Convert.ToInt32(Console.ReadLine());
@@ -95,9 +97,15 @@ while (true)
                         Console.Clear();
                         // Possible future implementaion
                         Console.WriteLine("ADD TO DATABASE");
-                        Console.Write("User Input: "); string user = Console.ReadLine();
-                        Console.Write("Bot Response: "); string bot = Console.ReadLine();
-                        ChatbotData.Add(new Chatbot(user, bot));
+                        Console.Write("Enter a catagory for these phrases: "); string catagory = Console.ReadLine().ToLower().Trim();
+                        if (Search.LinearCatagory(Database, catagory) != -1)
+                        {
+                            Console.Write("Catagory already exsists, please use the edit feature to change what alredy exsists in the database.");
+                            Utility.Load("Returning to Database Menu", 1, 900);
+                        }
+                        Console.Write("Possible User Inputs (seperate responses with a ','): "); List<string> user = Console.ReadLine().Split(',').ToList();
+                        Console.Write("Possible Bot Responses (seperate responses with a ','): "); List<string> bot = Console.ReadLine().Split(',').ToList();
+                        Database.Add(new Chatbot(catagory, user, bot));
                         Console.WriteLine("\nReturn to Database Menu? Y -or- N");
                         Console.Write("-> ");
                         if (Console.ReadLine().ToLower() == "y")
@@ -109,18 +117,25 @@ while (true)
             }
             else if (DatabaseChoice == 3)
             {
-                ChatbotData = JsonSerializer.Deserialize<List<Chatbot>>(File.ReadAllText(jsonCurrentPath));
+                Database = JsonSerializer.Deserialize<List<Chatbot>>(File.ReadAllText(jsonCurrentPath));
                 Utility.Load("Fetching", 3, 400);
                 Utility.Load("Success, Returning", 1, 600);
 
             }
             else if (DatabaseChoice == 4)
             {
-                File.WriteAllText(jsonCurrentPath, JsonSerializer.Serialize(ChatbotData));
+                File.WriteAllText(jsonCurrentPath, JsonSerializer.Serialize(Database));
                 Utility.Load("Writing", 3, 400);
                 Utility.Load("Success, Returning", 1, 600);
             }
             else if (DatabaseChoice == 5)
+            {
+                Database.Clear();
+                File.WriteAllText(jsonCurrentPath, JsonSerializer.Serialize(Database));
+                Utility.Load("Clearing Local File", 3, 400);
+                Utility.Load("Success, Returning", 1, 600);
+            }
+            else if (DatabaseChoice == 6)
             {
                 break;
             }
@@ -132,8 +147,8 @@ while (true)
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write("Version: ");
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine("*N/A*\nNotes: Just to let you know, I used this version section for testing : )");
-        Console.WriteLine("Test: ");
+        Console.WriteLine("*N/A*\nNotes: UI will get a refresher after i have done the chatbot algorithm");
+        Console.WriteLine("\nTest: ");
         Console.WriteLine("\nPRESS ANY KEY TO RETURN BACK TO MAIN MENU");
         Console.Write("-> ");
         Console.ReadLine();
