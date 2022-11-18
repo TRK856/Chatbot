@@ -1,35 +1,12 @@
 // idk what to name this but its useful stuff
 namespace ConsoleApp
 {
-    public class Chat
-    {
-        public static void Create()
-        {
-            // Intial chat setup
-            Console.Write("[cat.jpg] Chat Bot | ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("● ");
-            Console.ForegroundColor = GlobalVar.DefaultColorForeground;
-            Console.WriteLine("Online");
-            Console.WriteLine("--------------------------");
-            Console.WriteLine("History will be erased after conversation is over.");
-            Console.WriteLine("--------------------------\n");
-        }
-        public static void BotReply(string whatToSay)
-        {
-            // Bot Text
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"[cat.jpg] Chat Bot > {whatToSay}");
-            Console.ForegroundColor = GlobalVar.DefaultColorForeground;
-        }
-    }
-
     // picked the best search idk if i use it tho
     public class Search
     {
         public static int LinearCatagory(List<Chatbot> anList, string catagory)
         {
-            for (int i = 0; i < anList.Count(); i++)
+            for (int i = 0; i < anList.Count; i++)
             {
                 if (anList[i].catagory == catagory)
                 {
@@ -42,20 +19,22 @@ namespace ConsoleApp
         }
 
         // string linear search
-        public static int Linear(string[] anArray, string item)
+        public static int LinearUserInput(List<Chatbot> aList, string inputToSearch)
         {
-            for (int i = 0; i < anArray.Length; i++)
+            for (int i = 0; i < aList.Count; i++)
             {
-                if (anArray[i] == item)
+                for (int f = 0; f < aList[i].userInputs.Count; f++)
                 {
-                    return i;
+                    if (aList[i].userInputs[f].ToLower() == inputToSearch.ToLower())
+                    {
+                        return i;
+                    }
                 }
             }
 
             // Went through for loop without finding item, so...
             return -1;
         }
-
     }
 
     // picked the best sort idk if i use it tho
@@ -108,6 +87,7 @@ namespace ConsoleApp
             }
             Console.WriteLine($"{anArray[anArray.Length - 1]}]");
         }
+
         static public void WriteAll(string[] anArray)
         {
             Console.Write("[");
@@ -117,10 +97,11 @@ namespace ConsoleApp
             }
             Console.WriteLine($"{anArray[anArray.Length - 1]}]");
         }
+
         static public void WriteAll(List<Chatbot> aList)
         {
             Console.WriteLine("[");
-            for (int i = 0; i < aList.Count(); i++)
+            for (int i = 0; i < aList.Count; i++)
             {
                 Utility.Tab(1);
                 Console.WriteLine("{");
@@ -131,11 +112,11 @@ namespace ConsoleApp
                 Console.WriteLine("'UserInputs':");
                 Utility.Tab(3);
                 Console.WriteLine("{");
-                for (int f = 0; f < aList[i].userInputs.Count(); f++)
+                for (int f = 0; f < aList[i].userInputs.Count; f++)
                 {
                     Utility.Tab(4);
                     Console.Write($"'{aList[i].userInputs[f]}'");
-                    if (f != aList[i].userInputs.Count() - 1)
+                    if (f != aList[i].userInputs.Count - 1)
                     {
                         Console.WriteLine(",");
                     }
@@ -150,11 +131,11 @@ namespace ConsoleApp
                 Console.WriteLine("'BotRespnses':");
                 Utility.Tab(3);
                 Console.WriteLine("{");
-                for (int j = 0; j < aList[i].botResponses.Count(); j++)
+                for (int j = 0; j < aList[i].botResponses.Count; j++)
                 {
                     Utility.Tab(4);
                     Console.Write($"'{aList[i].botResponses[j]}'");
-                    if (j != aList[i].botResponses.Count() - 1)
+                    if (j != aList[i].botResponses.Count - 1)
                     {
                         Console.WriteLine(",");
                     }
@@ -167,7 +148,7 @@ namespace ConsoleApp
                 Console.WriteLine("}");
                 Console.ForegroundColor = GlobalVar.DefaultColorForeground;
                 Utility.Tab(1);
-                if (i == aList.Count() - 1)
+                if (i == aList.Count - 1)
                 {
                     Console.WriteLine("}");
                 }
@@ -178,18 +159,21 @@ namespace ConsoleApp
             }
             Console.WriteLine("]");
         }
+
         static public void Swap(int[] anArray, int pos1, int pos2)
         {
             int swap = anArray[pos1];
             anArray[pos1] = anArray[pos2];
             anArray[pos2] = swap;
         }
+
         static public void Swap(string[] anArray, int pos1, int pos2)
         {
             string swap = anArray[pos1];
             anArray[pos1] = anArray[pos2];
             anArray[pos2] = swap;
         }
+
         static public void Tab(int numOfTab)
         {
             for (int i = 0; i < numOfTab; i++)
@@ -197,21 +181,21 @@ namespace ConsoleApp
                 Console.Write("      ");
             }
         }
+
         static public void Load(string message, int animationRepition, int animationLength)
         {
             for (int i = 0; i < animationRepition; i++)
             {
                 Console.Clear();
-                Console.WriteLine($"{message}.");
+                Console.Write($"{message}.");
                 Thread.Sleep(animationLength);
-                Console.Clear();
-                Console.WriteLine($"{message}..");
+                Console.Write(".");
                 Thread.Sleep(animationLength);
-                Console.Clear();
-                Console.WriteLine($"{message}...");
+                Console.Write(".");
                 Thread.Sleep(animationLength);
             }
         }
+
         static public void CreateMenu(string menuIntro, string[] options)
         {
             Console.WriteLine($"{menuIntro}");
