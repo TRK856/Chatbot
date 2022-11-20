@@ -55,6 +55,7 @@ while (true)
     if (MainMenuChoice == 1)
     {
         Chat.Create();
+
         // actual chat
         while (true)
         {

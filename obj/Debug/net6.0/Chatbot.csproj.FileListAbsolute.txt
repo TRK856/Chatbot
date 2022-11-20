@@ -1,15 +1,30 @@
-F:\CS30\Chatbot\bin\Debug\net6.0\Chatbot.exe
-F:\CS30\Chatbot\bin\Debug\net6.0\Chatbot.deps.json
-F:\CS30\Chatbot\bin\Debug\net6.0\Chatbot.runtimeconfig.json
-F:\CS30\Chatbot\bin\Debug\net6.0\Chatbot.dll
-F:\CS30\Chatbot\bin\Debug\net6.0\Chatbot.pdb
-F:\CS30\Chatbot\obj\Debug\net6.0\Chatbot.csproj.AssemblyReference.cache
-F:\CS30\Chatbot\obj\Debug\net6.0\Chatbot.GeneratedMSBuildEditorConfig.editorconfig
-F:\CS30\Chatbot\obj\Debug\net6.0\Chatbot.AssemblyInfoInputs.cache
-F:\CS30\Chatbot\obj\Debug\net6.0\Chatbot.AssemblyInfo.cs
-F:\CS30\Chatbot\obj\Debug\net6.0\Chatbot.csproj.CoreCompileInputs.cache
-F:\CS30\Chatbot\obj\Debug\net6.0\Chatbot.dll
-F:\CS30\Chatbot\obj\Debug\net6.0\refint\Chatbot.dll
-F:\CS30\Chatbot\obj\Debug\net6.0\Chatbot.pdb
-F:\CS30\Chatbot\obj\Debug\net6.0\Chatbot.genruntimeconfig.cache
-F:\CS30\Chatbot\obj\Debug\net6.0\ref\Chatbot.dll
+F:/CS30/Chatbot/bin/Debug/net6.0/Chatbot.exe
+F:/CS30/Chatbot/bin/Debug/net6.0/Chatbot.deps.json
+F:/CS30/Chatbot/bin/Debug/net6.0/Chatbot.runtimeconfig.json
+F:/CS30/Chatbot/bin/Debug/net6.0/Chatbot.dll
+F:/CS30/Chatbot/bin/Debug/net6.0/Chatbot.pdb
+F:/CS30/Chatbot/obj/Debug/net6.0/Chatbot.csproj.AssemblyReference.cache
+F:/CS30/Chatbot/obj/Debug/net6.0/Chatbot.GeneratedMSBuildEditorConfig.editorconfig
+F:/CS30/Chatbot/obj/Debug/net6.0/Chatbot.AssemblyInfoInputs.cache
+F:/CS30/Chatbot/obj/Debug/net6.0/Chatbot.AssemblyInfo.cs
+F:/CS30/Chatbot/obj/Debug/net6.0/Chatbot.csproj.CoreCompileInputs.cache
+F:/CS30/Chatbot/obj/Debug/net6.0/Chatbot.dll
+F:/CS30/Chatbot/obj/Debug/net6.0/refint/Chatbot.dll
+F:/CS30/Chatbot/obj/Debug/net6.0/Chatbot.pdb
+F:/CS30/Chatbot/obj/Debug/net6.0/Chatbot.genruntimeconfig.cache
+F:/CS30/Chatbot/obj/Debug/net6.0/ref/Chatbot.dll
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Chatbot
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Chatbot.deps.json
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Chatbot.runtimeconfig.json
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Chatbot.dll
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/bin/Debug/net6.0/Chatbot.pdb
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Chatbot.csproj.AssemblyReference.cache
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Chatbot.GeneratedMSBuildEditorConfig.editorconfig
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Chatbot.AssemblyInfoInputs.cache
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Chatbot.AssemblyInfo.cs
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Chatbot.csproj.CoreCompileInputs.cache
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Chatbot.dll
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/refint/Chatbot.dll
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Chatbot.pdb
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/Chatbot.genruntimeconfig.cache
+/Users/taharehankamil/Downloads/VSCode/Algorithms - Chat Bot/obj/Debug/net6.0/ref/Chatbot.dll

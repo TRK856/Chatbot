@@ -34,7 +34,7 @@ namespace Algorithms
             Random rnd = new Random();
             int indexOfInput = Search.LinearUserInput(
                 aList,
-                Regex.Replace(userInput, "/[^a-zA-Z ]+/gmxi", "")
+                Regex.Replace(userInput, @"[^a-zA-Z ]+", "")
             );
             if (indexOfInput != -1)
             {
@@ -43,19 +43,35 @@ namespace Algorithms
                         rnd.Next(0, aList[indexOfInput].botResponses.Count)
                     ]
                 );
-                if (GlobalVar.greeted == false)
-                {
-                    Chat.BotReply(
-                        aList[Search.LinearCatagory(aList, "greeting")].botResponses[
-                            rnd.Next(0, aList[indexOfInput].botResponses.Count)
-                        ]
-                    );
-                }
-                else { }
             }
             else
             {
-                Chat.BotReply("ERROR, please train bot for this function.");
+                List<string> splitInput = new List<string>();
+                splitInput = Regex.Replace(userInput, @"[^a-zA-Z ]+", "@#o;").Split("@#o;").ToList();
+
+                for (int i = 0; i < splitInput.Count; i++)
+                {
+                    if (string.IsNullOrWhiteSpace(splitInput[i]))
+                    {
+                        splitInput.RemoveAt(i);
+                    }
+                }
+                for (int i = 0; i < splitInput.Count; i++)
+                {
+                    indexOfInput = Search.LinearUserInput(aList, splitInput[i].Trim());
+                    if (indexOfInput != -1)
+                    {
+                        Chat.BotReply(
+                            aList[indexOfInput].botResponses[
+                                rnd.Next(0, aList[indexOfInput].botResponses.Count)
+                            ]
+                        );
+                    }
+                    else
+                    {
+                        Chat.BotReply($"ERROR - {splitInput[i]} --- Bot Not trained to handle exception");
+                    }
+                }
             }
         }
     }

@@ -12,7 +12,7 @@
     "botResponses": ["Happy to help!", "Any time!", "My pleasure", "You're most welcome!"]
    },
    {"catagory": "name",
-   "userInputs": ["what is your name", "what should I call you", "whats your name","Who are you", "What are you"],
+   "userInputs": ["What is your name", "What should I call you", "Whats your name", "Who are you", "What are you"],
    "botResponses": ["You can call me Ineeda.", "I'm Ineeda!", "Just call me as Ineeda Pea","I am Ineeda, your bot assistant"]
    }
 ]

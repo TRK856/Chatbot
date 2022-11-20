@@ -4,11 +4,11 @@ namespace ConsoleApp
     // picked the best search idk if i use it tho
     public class Search
     {
-        public static int LinearCatagory(List<Chatbot> anList, string catagory)
+        public static int LinearCatagory(List<Chatbot> aList, string catagory)
         {
-            for (int i = 0; i < anList.Count; i++)
+            for (int i = 0; i < aList.Count; i++)
             {
-                if (anList[i].catagory == catagory)
+                if (aList[i].catagory == catagory)
                 {
                     return i;
                 }
